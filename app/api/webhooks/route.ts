@@ -12,7 +12,7 @@ export const POST = async (req: NextRequest) => {
     const event = stripe.webhooks.constructEvent(
       rawBody,
       signature,
-      STRIPE_WEBHOOK_SECRET!
+      process.env.STRIPE_WEBHOOK_SECRET!
     )
 
     if (event.type === "checkout.session.completed") {
